@@ -1,0 +1,21 @@
+{
+  "installCommand": "npm ci",
+  "outputDirectory": ".",
+  "functions": {
+    "api/index.*": {
+      "memory": 1024,
+      "maxDuration": 10,
+      "includeFiles": "{./node_modules/ref-napi/prebuilds/**/*,./node_modules/ffi-napi/prebuilds/**/*}"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/new-message",
+      "destination": "/api"
+    },
+    {
+      "source": "/",
+      "destination": "/api"
+    }
+  ]
+}

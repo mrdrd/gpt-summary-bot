@@ -1,26 +1,21 @@
 {
-  "name": "gpt4free-ts",
-  "version": "0.0.1",
-  "description": "gpt4free typescript version",
-  "main": "index.js",
+  "name": "summary-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/index.ts",
   "scripts": {
     "test": "ts-node test.ts",
-    "start": "ts-node index.ts",
-    "build": "tsc"
+    "start": "ts-node api/index.ts"
   },
-  "keywords": [
-    "git4free",
-    "typescript"
-  ],
-  "author": "xiangsx",
+  "author": "Oleg",
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/event-stream": "^4.0.0",
     "@types/koa": "^2.13.6",
+    "@types/koa__cors": "^4.0.0",
     "@types/koa-bodyparser": "^4.3.10",
     "@types/koa-router": "^7.4.4",
-    "@types/koa__cors": "^4.0.0",
     "@types/node": "^18.16.3",
     "@types/string-similarity": "^4.0.0",
     "@types/turndown": "^5.0.1",
@@ -32,9 +27,11 @@
     "@dqbd/tiktoken": "^1.0.7",
     "@koa/cors": "^4.0.0",
     "axios": "^1.4.0",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "event-stream": "^4.0.1",
+    "express": "^4.18.2",
     "fake-useragent": "^1.0.1",
+    "google-spreadsheet": "^4.0.2",
     "http-proxy-agent": "^6.0.1",
     "https-proxy-agent": "^5.0.1",
     "koa": "^2.14.2",
