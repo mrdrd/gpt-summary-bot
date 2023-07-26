@@ -2,10 +2,10 @@
   "name": "summary-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "api/index.ts",
+  "main": "index.ts",
   "scripts": {
     "test": "ts-node test.ts",
-    "start": "ts-node api/index.ts"
+    "start": "ts-node index.ts"
   },
   "author": "Oleg",
   "license": "ISC",

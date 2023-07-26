@@ -58,7 +58,7 @@ app.post('/new-message', async (req, res) => {
     if (messageText) {
         try {
             const prompt = `Напиши краткое изложение текста: "${messageText}"`;
-            responseText = (await getGPTAnswer(prompt))?.content?.replace('Основная мысль текста: ', '')!;
+            responseText = (await getGPTAnswer(prompt))?.content!;
         } catch (e) {
             console.error(e);
         }
