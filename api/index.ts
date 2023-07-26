@@ -49,7 +49,7 @@ app.post('/new-message', async (req, res) => {
     }
 
     if (!messageText) {
-        console.error({messageText});
+        console.error(req.body);
     }
 
     let responseText = 'Something went wrong...'
