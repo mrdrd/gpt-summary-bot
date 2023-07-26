@@ -5,7 +5,7 @@ const axios = require('axios');
 const {config} = require('dotenv');
 const express = require('express');
 
-const TIMEOUT = 6_500;
+const TIMEOUT = 9_000;
 
 const chatModel = new ChatModelFactory();
 
