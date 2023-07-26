@@ -43,18 +43,24 @@ app.post('/new-message', async (req, res) => {
     const messageText = message?.text?.toLowerCase()?.trim()
     const chatId = message?.chat?.id;
 
-    if (!messageText || !chatId) {
-        console.error(req.body);
+    if (!chatId) {
+        console.error({chatId});
         return res.sendStatus(400)
+    }
+
+    if (!messageText) {
+        console.error({messageText});
     }
 
     let responseText = 'Something went wrong...'
 
-    try {
-        const prompt = `Напиши основную мысль текста: "${messageText}"`;
-        responseText = (await getGPTAnswer(prompt))?.content?.replace('Основная мысль текста: ', '');
-    } catch (e) {
-        console.error(e);
+    if (messageText) {
+        try {
+            const prompt = `Напиши основную мысль текста: "${messageText}"`;
+            responseText = (await getGPTAnswer(prompt))?.content?.replace('Основная мысль текста: ', '');
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     try {
