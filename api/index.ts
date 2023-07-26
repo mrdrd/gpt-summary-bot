@@ -8,7 +8,7 @@ const chatModel = new ChatModelFactory();
 
 const getGPTAnswer = async (prompt: string) => {
     const model = ModelType.GPT3p5Turbo;
-    const site = Site.Vita;
+    const site = Site.You;
 
     if (!prompt) {
         return;
