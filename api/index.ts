@@ -46,12 +46,14 @@ app.post('/new-message', async (req, res) => {
 
     if (!chatId) {
         console.error({message});
-        return res.sendStatus(400)
+        return res.sendStatus(400);
     }
 
-    console.log({message});
+    if (!messageText) {
+        console.error({message});
+    }
 
-    let responseText = 'Something went wrong...'
+    let responseText = 'Something went wrong...';
 
     if (messageText) {
         try {
@@ -69,8 +71,8 @@ app.post('/new-message', async (req, res) => {
         })
         res.send('Done')
     } catch (e) {
-        console.log(e)
-        res.send(e)
+        console.error(e);
+        res.send(e);
     }
 })
 
