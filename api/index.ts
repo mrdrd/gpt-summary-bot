@@ -44,7 +44,7 @@ app.post('/new-message', async (req, res) => {
     const chatId = message?.chat?.id;
 
     if (!messageText || !chatId) {
-        console.error({messageText, chatId});
+        console.error(req.body);
         return res.sendStatus(400)
     }
 
