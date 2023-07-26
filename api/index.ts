@@ -1,8 +1,11 @@
 import {ChatModelFactory, Site} from "../model";
 import {ModelType, PromptToString} from "../model/base";
+
 const axios = require('axios');
-const { config } = require('dotenv');
+const {config} = require('dotenv');
 const express = require('express');
+
+const TIMEOUT = 9_000;
 
 const chatModel = new ChatModelFactory();
 
@@ -39,7 +42,7 @@ app.use(
 
 // @ts-ignore
 app.post('/new-message', async (req, res) => {
-    const { message } = req.body;
+    const {message} = req.body;
 
     const messageText = message?.text?.trim() || message?.caption;
     const chatId = message?.chat?.id;
@@ -58,7 +61,9 @@ app.post('/new-message', async (req, res) => {
     if (messageText) {
         try {
             const prompt = `Напиши краткое изложение текста: "${messageText}"`;
-            responseText = (await getGPTAnswer(prompt))?.content!;
+            const timeout: Promise<{ content: string }> =
+                new Promise((res) => setTimeout(() => res({content: 'Слишком длинный текст'}), TIMEOUT));
+            responseText = (await Promise.race([getGPTAnswer(prompt), timeout]))?.content!;
         } catch (e) {
             console.error(e);
         }
