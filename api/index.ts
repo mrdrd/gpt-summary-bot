@@ -38,9 +38,9 @@ app.use(
 )
 
 app.post('/new-message', async (req, res) => {
-    const { message } = req.body
+    const { message } = req.body;
 
-    const messageText = message?.text?.toLowerCase()?.trim()
+    const messageText = message?.text?.trim() || message?.caption;
     const chatId = message?.chat?.id;
 
     if (!chatId) {
